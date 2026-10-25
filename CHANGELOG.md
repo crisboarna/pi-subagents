@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- `extensionBindings` now reach foreground children. Since children became in-process sessions, only background children got `PI_SUBAGENT_EXTENSION_BINDINGS`, so an extension in a foreground child saw no bindings, or the bindings of the background child that launched it. A foreground child now gets its own bindings while its extensions load and run `session_start`, and the parent's environment is restored afterwards.
+
 ## [0.82.1] - 2026-10-24
 
 ### Highlights
