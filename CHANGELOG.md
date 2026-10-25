@@ -4,7 +4,8 @@
 
 ### Fixed
 
-- `extensionBindings` now reach foreground children. Since children became in-process sessions, only background children got `PI_SUBAGENT_EXTENSION_BINDINGS`, so an extension in a foreground child saw no bindings, or the bindings of the background child that launched it. A foreground child now gets its own bindings while its extensions load and run `session_start`, and the parent's environment is restored afterwards.
+- When text written after a tool call reaches Pi only as a summary, as happens through the Claude Agent SDK used by pi-claude-bridge, a lost ```` ```js workflow ```` block no longer means writing the script to a file first. The error now says to resend the source as `options: { script: "..." }`, which runs it directly. The tool's schema and description are unchanged, so other providers see no difference.
+- `extensionBindings` now reach foreground children. Since children became in-process sessions, only background children got `PI_SUBAGENT_EXTENSION_BINDINGS`, so an extension in a foreground child saw no bindings, or the bindings of the background child that launched it. A foreground child now gets its own bindings while its extensions load and run `session_start`, and the parent's environment is restored afterwards. Thanks to [@crisboarna](https://github.com/crisboarna). (#3049)
 
 ## [0.82.1] - 2026-10-24
 
